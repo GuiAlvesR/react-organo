@@ -50,6 +50,10 @@ function App() {
     setCollaborators([...collaborators, collaborator]);
   };
 
+  function deleteCollaborator() {
+    console.log("deletar");
+  }
+
   return (
     <>
       <Banner />
@@ -68,6 +72,7 @@ function App() {
           collaborators={collaborators.filter(
             (collaborator) => collaborator.time === time.name
           )}
+          onDelete={deleteCollaborator}
         />
       ))}
       <Footer />
