@@ -6,7 +6,7 @@ import Time from "./components/Time";
 import Footer from "./components/Footer";
 
 function App() {
-  const times = [
+  const [times, setTimes] = useState([
     {
       name: "Programação",
       corPrimary: "#57c278",
@@ -42,7 +42,7 @@ function App() {
       corPrimary: "#ff8a29",
       corSecundary: "#ffeedf",
     },
-  ];
+  ]);
 
   const [collaborators, setCollaborators] = useState([]);
 
@@ -54,6 +54,14 @@ function App() {
     console.log("deletar");
   }
 
+  function alterCorInTime(cor, name) {
+    setTimes(times.map(time => {
+      if(time.name === name){
+        time.corPrimary = cor
+      }
+      return time
+    }))
+  }
   return (
     <>
       <Banner />
@@ -65,6 +73,7 @@ function App() {
 
       {times.map((time) => (
         <Time
+          alterCor={alterCorInTime}
           key={time.name}
           name={time.name}
           corPrimary={time.corPrimary}
