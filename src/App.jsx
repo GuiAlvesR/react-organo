@@ -48,11 +48,14 @@ function App() {
   const [collaborators, setCollaborators] = useState([]);
 
   const onNewAddCollaborator = (collaborator) => {
-    setCollaborators([...collaborators, collaborator]);
+    const newCollaborator = { ...collaborator, id: uuidv4() };
+    setCollaborators([...collaborators, newCollaborator]);
   };
 
-  function deleteCollaborator() {
-    console.log("deletar");
+  function deleteCollaborator(id) {
+    setCollaborators(
+      collaborators.filter((collaborator) => collaborator.id !== id)
+    );
   }
 
   function alterCorInTime(cor, id) {

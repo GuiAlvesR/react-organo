@@ -12,7 +12,7 @@ const Time = (props) => {
         <section className="time" style={background}>
           <input
             onChange={(event) => props.alterCor(event.target.value, props.id)}
-            value={props.cor}
+            value={props.corPrimary}
             type="color"
             className="input-cor"
           />
@@ -21,6 +21,7 @@ const Time = (props) => {
           <div className="collaborators">
             {props.collaborators.map((collaborator) => (
               <Collaborator
+                id={collaborator.id}
                 key={collaborator.name}
                 name={collaborator.name}
                 cargo={collaborator.cargo}
