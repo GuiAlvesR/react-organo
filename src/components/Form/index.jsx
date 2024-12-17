@@ -10,6 +10,8 @@ const Form = (props) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState(props.times[0]);
+  const [nomeTime, setNomeTime] = useState("");
+  const [cor, setCor] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +43,25 @@ const Form = (props) => {
     setTime(props.times[0]);
 
     toast.success("Colaborador criado com sucesso!", {
+      style: {
+        padding: "20px 20px",
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      },
+    });
+  };
+
+  const handleNewTimeSubmit = (event) => {
+    event.preventDefault();
+
+    props.registeredTime({
+      name: nomeTime,
+      cor,
+    });
+
+    setNomeTime("");
+    setCor("");
+
+    toast.success("Novo time criado com sucesso!", {
       style: {
         padding: "20px 20px",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
@@ -80,6 +101,25 @@ const Form = (props) => {
           onAlter={(value) => setTime(value)}
         />
         <Button>Criar Card</Button>
+      </form>
+
+      <form onSubmit={handleNewTimeSubmit}>
+        <h2>Preencha os dados para criar um novo time.</h2>
+        <CampText
+          mandatory
+          label="Nome"
+          placeholder="Digite o nome do time"
+          value={nomeTime}
+          onAlter={(value) => setNomeTime(value)}
+        />
+        <CampText
+          mandatory
+          label="cor"
+          placeholder="Digite a cor do time"
+          value={cor}
+          onAlter={(value) => setCor(value)}
+        />
+        <Button>Criar um novo time</Button>
       </form>
     </section>
   );

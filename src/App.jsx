@@ -68,10 +68,16 @@ function App() {
       })
     );
   }
+
+  function registeredTime(novoTime) {
+    setTimes([...times, { ...novoTime, id: uuidv4() }]);
+  }
+
   return (
     <>
       <Banner />
       <Form
+        registeredTime={registeredTime}
         times={times.map((time) => time.name)}
         toRegisteredCollaborator={onNewAddCollaborator}
         collaborators={collaborators}
