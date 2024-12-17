@@ -4,43 +4,44 @@ import Banner from "./components/Banner";
 import Form from "./components/Form";
 import Time from "./components/Time";
 import Footer from "./components/Footer";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [times, setTimes] = useState([
     {
+      id: uuidv4(),
       name: "Programação",
-      corPrimary: "#57c278",
-      corSecundary: "#d9f7e9",
+      cor: "#57c278",
     },
     {
+      id: uuidv4(),
       name: "FrontEnd",
-      corPrimary: "#82cffa",
-      corSecundary: "#e8f8ff",
+      cor: "#82cffa",
     },
     {
+      id: uuidv4(),
       name: "Data Science",
-      corPrimary: "#a6d157",
-      corSecundary: "#f0f8e2",
+      cor: "#a6d157",
     },
     {
+      id: uuidv4(),
       name: "DevOps",
-      corPrimary: "#e06b69",
-      corSecundary: "#fde7e8",
+      cor: "#e06b69",
     },
     {
+      id: uuidv4(),
       name: "Ux e Design",
-      corPrimary: "#db6ebf",
-      corSecundary: "#fae9f5",
+      cor: "#db6ebf",
     },
     {
+      id: uuidv4(),
       name: "Inovação e Gestão",
-      corPrimary: "#ffba05",
-      corSecundary: "#fff5d9",
+      cor: "#ffba05",
     },
     {
+      id: uuidv4(),
       name: "Mobile",
-      corPrimary: "#ff8a29",
-      corSecundary: "#ffeedf",
+      cor: "#ff8a29",
     },
   ]);
 
@@ -54,13 +55,15 @@ function App() {
     console.log("deletar");
   }
 
-  function alterCorInTime(cor, name) {
-    setTimes(times.map(time => {
-      if(time.name === name){
-        time.corPrimary = cor
-      }
-      return time
-    }))
+  function alterCorInTime(cor, id) {
+    setTimes(
+      times.map((time) => {
+        if (time.id === id) {
+          time.cor = cor;
+        }
+        return time;
+      })
+    );
   }
   return (
     <>
@@ -76,8 +79,9 @@ function App() {
           alterCor={alterCorInTime}
           key={time.name}
           name={time.name}
-          corPrimary={time.corPrimary}
-          corSecundary={time.corSecundary}
+          id={time.id}
+          corPrimary={time.cor}
+          corSecondary={time.cor}
           collaborators={collaborators.filter(
             (collaborator) => collaborator.time === time.name
           )}
