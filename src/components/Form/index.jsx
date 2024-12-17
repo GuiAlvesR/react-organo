@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import Button from "../Button";
-import CampText from "../CampText";
+import Camp from "../Camp";
 import DropwdownList from "../DropdownList";
 import "./Form.css";
 
@@ -73,21 +73,21 @@ const Form = (props) => {
     <section className="form">
       <form onSubmit={handleSubmit}>
         <h2>Preencha os dados para criar o card do colaborador</h2>
-        <CampText
+        <Camp
           mandatory={true}
           label="Nome"
           placeholder="Digite seu nome"
           value={nome}
           onAlter={(value) => setNome(value)}
         />
-        <CampText
+        <Camp
           mandatory={true}
           label="Cargo"
           placeholder="Digite seu cargo"
           value={cargo}
           onAlter={(value) => setCargo(value)}
         />
-        <CampText
+        <Camp
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           value={imagem}
@@ -105,16 +105,17 @@ const Form = (props) => {
 
       <form onSubmit={handleNewTimeSubmit}>
         <h2>Preencha os dados para criar um novo time.</h2>
-        <CampText
+        <Camp
           mandatory
           label="Nome"
           placeholder="Digite o nome do time"
           value={nomeTime}
           onAlter={(value) => setNomeTime(value)}
         />
-        <CampText
+        <Camp
           mandatory
-          label="cor"
+          type="color"
+          label="Cor"
           placeholder="Digite a cor do time"
           value={cor}
           onAlter={(value) => setCor(value)}
