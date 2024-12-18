@@ -4,7 +4,6 @@ const Add = () => {
   function formHidden() {
     const form = document.querySelector(".form");
     form.classList.toggle("hidden");
-    console.log(form);
   }
 
   return (

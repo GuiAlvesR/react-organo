@@ -22,7 +22,7 @@ const Time = (props) => {
             {props.collaborators.map((collaborator) => (
               <Collaborator
                 id={collaborator.id}
-                key={collaborator.name}
+                key={collaborator.id}
                 name={collaborator.name}
                 cargo={collaborator.cargo}
                 imagem={collaborator.imagem}

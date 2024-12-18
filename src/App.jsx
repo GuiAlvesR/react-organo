@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Banner from "./components/Banner";
 import Form from "./components/Form";
@@ -58,6 +58,12 @@ function App() {
       collaborators.filter((collaborator) => collaborator.id !== id)
     );
   }
+
+  useEffect(() => {
+    fetch("http://localhost:8080/colaborators")
+      .then((response) => response.json())
+      .then((data) => setCollaborators(data));
+  }, []);
 
   function alterCorInTime(cor, id) {
     setTimes(
