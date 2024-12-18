@@ -1,6 +1,7 @@
 .banner {
   background-color: #627bf7;
   text-align: center;
+  user-select: none;
 }
 
 .banner img {

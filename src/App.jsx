@@ -48,7 +48,7 @@ function App() {
   const [collaborators, setCollaborators] = useState([]);
 
   const onNewAddCollaborator = (collaborator) => {
-    const newCollaborator = { ...collaborator, id: uuidv4() };
+    const newCollaborator = { ...collaborator, id: uuidv4(), favorite: false };
     setCollaborators([...collaborators, newCollaborator]);
   };
 
@@ -73,6 +73,17 @@ function App() {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
   }
 
+  function resolveFavorite(id) {
+    setCollaborators(
+      collaborators.map((collaborator) => {
+        if (collaborator.id === id) {
+          collaborator.favorite = !collaborator.favorite;
+          return collaborator;
+        }
+      })
+    );
+  }
+
   return (
     <>
       <Banner />
@@ -85,6 +96,7 @@ function App() {
 
       {times.map((time) => (
         <Time
+          onFavorite={resolveFavorite}
           alterCor={alterCorInTime}
           key={time.name}
           name={time.name}

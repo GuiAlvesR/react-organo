@@ -27,6 +27,8 @@ const Time = (props) => {
                 cargo={collaborator.cargo}
                 imagem={collaborator.imagem}
                 corPrimary={props.corPrimary}
+                favorite={collaborator.favorite}
+                onFavorite={props.onFavorite}
                 onDelete={props.onDelete}
               />
             ))}

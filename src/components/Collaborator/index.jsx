@@ -1,8 +1,17 @@
-import { IoIosCloseCircle } from "react-icons/io";
+import { IoIosCloseCircle, IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import "./Collaborator.css";
 import { toast } from "sonner";
 
-const Collaborator = ({ name, cargo, imagem, corPrimary, id, onDelete }) => {
+const Collaborator = ({
+  name,
+  cargo,
+  imagem,
+  corPrimary,
+  id,
+  onDelete,
+  favorite,
+  onFavorite,
+}) => {
   const background = { backgroundColor: corPrimary };
 
   function deleteColaborador() {
@@ -15,6 +24,15 @@ const Collaborator = ({ name, cargo, imagem, corPrimary, id, onDelete }) => {
       },
     });
   }
+
+  function favoriter() {
+    onFavorite(id);
+  }
+
+  const propsFavorite = {
+    size: 24,
+    onClick: favoriter,
+  };
 
   return (
     <>
@@ -30,6 +48,13 @@ const Collaborator = ({ name, cargo, imagem, corPrimary, id, onDelete }) => {
         <div className="footer">
           <h4>{name}</h4>
           <h5>{cargo}</h5>
+          <div className="favorite">
+            {favorite ? (
+              <IoMdHeart size={24} color="red" {...propsFavorite} />
+            ) : (
+              <IoMdHeartEmpty size={24} {...propsFavorite} />
+            )}
+          </div>
         </div>
       </div>
     </>
