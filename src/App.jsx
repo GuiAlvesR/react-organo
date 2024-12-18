@@ -73,16 +73,17 @@ function App() {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
   }
 
-  function resolveFavorite(id) {
-    setCollaborators(
-      collaborators.map((collaborator) => {
+  const resolveFavorite = (id) => {
+    setCollaborators((prevCollaborators) =>
+      prevCollaborators.map((collaborator) => {
+        if (!collaborator) return collaborator;
         if (collaborator.id === id) {
-          collaborator.favorite = !collaborator.favorite;
-          return collaborator;
+          return { ...collaborator, favorite: !collaborator.favorite };
         }
+        return collaborator;
       })
     );
-  }
+  };
 
   return (
     <>
@@ -98,7 +99,7 @@ function App() {
         <Time
           onFavorite={resolveFavorite}
           alterCor={alterCorInTime}
-          key={time.name}
+          key={time.id}
           name={time.name}
           id={time.id}
           corPrimary={time.cor}
