@@ -1,6 +1,12 @@
 import "./Add.css";
 
 const Add = () => {
+  function formHidden() {
+    const form = document.querySelector(".form");
+    form.classList.toggle("hidden");
+    console.log(form);
+  }
+
   return (
     <div className="section-add">
       <div className="content">
@@ -10,6 +16,7 @@ const Add = () => {
         className="icon"
         src="./imagens/add.png"
         alt="Ícone de organização"
+        onClick={formHidden}
       />
     </div>
   );
