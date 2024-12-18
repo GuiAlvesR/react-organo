@@ -1,0 +1,30 @@
+/* Container principal com borda */
+.section-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #627bf7;
+  margin: 0;
+  border-bottom: 4px solid #627bf7;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

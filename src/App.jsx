@@ -5,6 +5,7 @@ import Form from "./components/Form";
 import Time from "./components/Time";
 import Footer from "./components/Footer";
 import { v4 as uuidv4 } from "uuid";
+import Add from "./components/Add";
 
 function App() {
   const [times, setTimes] = useState([
@@ -94,7 +95,7 @@ function App() {
         toRegisteredCollaborator={onNewAddCollaborator}
         collaborators={collaborators}
       />
-
+      <Add />
       {times.map((time) => (
         <Time
           onFavorite={resolveFavorite}
